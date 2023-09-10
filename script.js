@@ -37,7 +37,7 @@ function computerPlay(){
 
 // getUserChoice function
 function getUserChoice(){
-    let userChoice = prompt("Rock, Paper, or Scissors?");
+    let userChoice = prompt("Welcome to Rock, Paper, Scissors Game! If you are ready then Just Type Rock, Paper, or Scissors! and Hit OK");
     return userChoice;
 }
 
@@ -46,6 +46,37 @@ function getUserChoice(){
 function game(){
     let computerChoice = computerPlay();
     let userChoice = getUserChoice();
-    let result = playRound(computerChoice, userChoice);
-    console.log(result);
+    let result;
+    let humanScore = 0;
+    let computerScore = 0;
+    let tie = 0;
+
+    //create a loop to run playRound 05 times
+    for(let i = 0; i < 5; i++){
+        result = (playRound(computerChoice, userChoice));
+
+        // recieve return and update score accordingly
+
+        if (result == "computerScore") {
+            computerScore++;
+        }else if (result == "humanScore") {
+            humanScore++;
+        }
+        else if (result == "It's a tie!") {
+            tie++;
+        }else{
+            console.log("Invalid Input");
+        }
+    }
+
+    if(computerScore > humanScore){
+        console.log("I know AI is a danger!");
+    }else if(humanScore > computerScore){
+        console.log("Congrats! You beat Computer!");
+    }else{
+        console.log("Tie!");
+    }
+    
 }
+
+game();

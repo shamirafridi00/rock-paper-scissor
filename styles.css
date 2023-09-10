@@ -1,0 +1,10 @@
+/* align headings and paragraph into center */
+
+
+h1{
+    margin-top: 300px;
+}
+
+h1, h3, p{
+    text-align: center;
+}
