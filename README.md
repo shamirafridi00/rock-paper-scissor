@@ -84,8 +84,123 @@ Write a game() which will do the following things:
 
 
 
+## UI Planning
+
+Buttons > Rock, Paper, Scissors
+heading: Score Board
+Game Turn: /5
+Human Score:
+Computer Score:
+Tie:
+
+Final Result: Computer win or Human Win or Tie
+
+Reset Button > Play Again?
 
 
+.....................................
+
+## User Planning
+
+playRound(computerChoice, userChoice) > don't need to change
+computerPlay()  > don't need to change
+getUserChoice() > dont' need this anymore
+
+game()  > changes will made in this function
+
+
+Add eventListners on button
+computerChoice and userChoice pass to button and get the result
+as humanWin or computerWin or tie
+
+result from button will be pass to the newly created function which will be 
+
+updateScore(result)
+
+
+// Function to update the scoreboard
+        function updateScore(result) {
+            if (result === 'computerScore') {
+                computerScore++;
+            } else if (result === 'humanScore') {
+                humanScore++;
+            } else if (result === "It's a tie!") {
+                tie++;
+            } else {
+                console.log("Invalid Input");
+            }
+
+            // Update the displayed scores
+            computerScoreDisplay.textContent = computerScore;
+            humanScoreDisplay.textContent = humanScore;
+            tieDisplay.textContent = tie;
+
+
+            //display message
+             if(computerScore > humanScore){
+               ("You lose! I know AI is a danger! but don't lose your heart.");
+                    }else if(humanScore > computerScore){
+                ("Congrats! You beat Computer!");
+                 }else{
+                ("Tie!");
+                         }
+        }
+
+
+
+### Code Organization:
+
+
+
+let result;
+let humanScore = 0;
+let computerScore = 0;
+let tie = 0;
+let counter = 0;
+const maxClicks = 5;
+
+
+btn1.event listener
+btn2.event listerne
+btn3. event listener
+UI variables call
+
+
+btns pass to the playRound for the result
+
+
+updateScore()
+display the score on the screen.
+
+
+function handleClick(){
+    if counter < maxClicks
+        const result = PlayRound()
+        updateScore(result)
+        counter++
+}else{
+    endGame();
+}
+
+
+function endGame(){
+    alert game end
+
+    reset Game
+}
+
+
+function resetGame(){
+    all varaibles set to 0
+    and display thm
+}
+
+
+
+
+main{
+    
+}
 
 
 

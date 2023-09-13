@@ -1,4 +1,12 @@
-//create playRound function
+
+
+/*
+    Start reading and understanding the logic of the code from game() then goes upward to downward direction.
+*/
+
+
+
+// This functions recevis the user choice from button input and computer choice with random number
 function playRound(computerChoice, userChoice){
 
     if (computerChoice == userChoice) {
@@ -33,7 +41,7 @@ function playRound(computerChoice, userChoice){
 }
 
 
-//computer random choice for rock, paper, scissors
+//computer random choice for rock, paper, scissors - random number
 function computerPlay(){
     let randomNumber = Math.floor(Math.random() * 3);
     if (randomNumber == 0) {
@@ -45,53 +53,126 @@ function computerPlay(){
     }
 }
 
-// getUserChoice function
-function getUserChoice(){
-    let userChoice = prompt("Welcome to Rock, Paper, Scissors Game! If you are ready then Just Type Rock, Paper, or Scissors! and Hit OK");
-    return userChoice;
+
+// creating global variables for score
+let computerScore = 0;
+let humanScore = 0;
+let tie = 0;
+let counter = 0;
+
+
+
+// this functions recieve it's result from game() also it declares displayWinner() and disableButtons()
+function scoreCounter(result){
+    
+
+    if (result == "computerScore") {
+        // Scores are keep adding because the score variabels are global otherwise it would not add more than 1 and would be set to 0 again and again
+        computerScore++;
+        document.getElementById("computerScore").textContent = computerScore;
+      
+    }else if (result == "humanScore") {
+        humanScore++;
+        document.getElementById("humanScore").textContent = humanScore;
+        
+    }
+    else if (result == "It's a tie!") {
+        tie++;
+        document.getElementById("tie").textContent = tie;
+        
+    }
+
+    counter++;
+    if(counter === 5){
+        displayWinner();
+        disableButtons();
+    }
+
+
 }
 
-// create game function
+
+// as the name of the funciton suggests
+function displayWinner(){
+    if(computerScore > humanScore){
+        document.getElementById("dislay").textContent = "You lose! I know AI is a danger! but don't lose your heart.";
+    }else if(humanScore > computerScore){
+        document.getElementById("dislay").textContent = "Congrats! You beat Computer!";
+    }else{
+        document.getElementById("dislay").textContent = "You made your game Tie with Computer!";
+    }
+    
+}
+
+// as the name of the function suggests
+function disableButtons(){
+    const buttons = document.getElementsByClassName("game-button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    }
+}
+
+
+// this function resets all the score variables to 0 and it also declare enableButtons()
+function reset(){
+    computerScore = 0;
+    humanScore = 0;
+    tie = 0;
+    counter = 0;
+
+    document.getElementById("computerScore").textContent = computerScore.toString();
+    document.getElementById("humanScore").textContent = humanScore.toString();
+    document.getElementById("tie").textContent = tie.toString();
+
+    document.getElementById("dislay").textContent = "................";
+
+    enableButtons();
+}
+
+
+
+// this function enables all the buttons 
+function enableButtons(){
+    const buttons = document.getElementsByClassName("game-button");
+
+    for (let i = 0; i < buttons.length; i++){
+        buttons[i].disabled = false;
+    }
+}
+
+// this is the main function
 
 function game(){
     let result;
-    let humanScore = 0;
-    let computerScore = 0;
-    let tie = 0;
 
-    //create a loop to run playRound 05 times
-    for(let i = 0; i < 5; i++){
-        let computerChoice = computerPlay();
-        let userChoice = getUserChoice();
-        result = (playRound(computerChoice, userChoice));
-
-        // recieve return and update score accordingly
-
-        if (result == "computerScore") {
-            computerScore++;
-        }else if (result == "humanScore") {
-            humanScore++;
-        }
-        else if (result == "It's a tie!") {
-            tie++;
-        }else{
-            console.log("Invalid Input");
-        }
-    }
+    // create buttons and their event listeners
+    const rockBtn = document.getElementById("rock");
+    const paperBtn = document.getElementById("paper");
+    const scissorsBtn = document.getElementById("scissors");
+    const resetBtn = document.getElementById('reset')
 
 
-    //check the score
-    if(computerScore > humanScore){
-        console.log("You lose! I know AI is a danger! but don't lose your heart.");
-    }else if(humanScore > computerScore){
-        console.log("Congrats! You beat Computer!");
-    }else{
-        console.log("Tie!");
-    }
+    rockBtn.addEventListener("click", function(){
+        result = (playRound(computerPlay(), "rock"));
+        scoreCounter(result);
+        
+    });
 
-    console.log("Score of Computer is", computerScore);
-    console.log("Score of Human is", humanScore);
-    console.log("Tie is", tie);
+    paperBtn.addEventListener("click", function(){
+        result = (playRound(computerPlay(), "paper"));
+        scoreCounter(result);
+    });
+
+    scissorsBtn.addEventListener("click", function(){
+        result = (playRound(computerPlay(), "scissors"));
+        scoreCounter(result);
+    });
+
+
+    resetBtn.addEventListener("click", function(){
+        reset();
+    })
+
     
 }
 
