@@ -1,10 +1,73 @@
-/* align headings and paragraph into center */
-
-
-h1{
-    margin-top: 300px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #8459c5cc;
+    color: #FFFFFF;
 }
 
-h1, h3, p{
+
+header{
+    /* do some formating and move it to center */
     text-align: center;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    margin: 5px;
+}
+
+
+h2{
+    margin-top: 40px;
+    font-size: 3rem;
+    text-align: center;
+}
+
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-button{
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black;
+    background-color: #FFD700;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.game-button:hover{
+    background-color: #4169E1;
+    color: rgb(0, 0, 0);
+}
+
+.result{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+#reset{
+    padding: 20px;
+    margin: 20px auto;
+    display: block;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black;
+    background-color: #FFD700;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#reset:hover{
+    background-color: #4169E1;
+    color: rgb(0, 0, 0);
 }
