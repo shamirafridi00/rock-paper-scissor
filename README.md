@@ -2,7 +2,7 @@
 # Rock Paper Scissors
 
 I made this game as an assignment of "The Odin Project". The assignment was taken from this given below link.
-https://www.theodinproject.com/lessons/foundations-rock-paper-scissors
+https://shamirafridi00.github.io/rock-paper-scissor/
 
 
 ### House rules:
